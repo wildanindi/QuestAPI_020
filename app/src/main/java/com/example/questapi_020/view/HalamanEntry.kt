@@ -71,20 +71,25 @@ fun EntrySiswaScreen(
 
 @Composable
 fun EntrySiswaBody(
-    uiStateSiswa: UIStateSiswa,
+    uiStateSiswa: UiStateSiswa,
     onSiswaValueChange: (DetailSiswa) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
-        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(id = R.dimen.padding_large)
+        ),
+        modifier = modifier.padding(
+            dimensionResource(id = R.dimen.padding_medium)
+        )
     ) {
         FormTambahSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
             onValueChange = onSiswaValueChange,
             modifier = Modifier.fillMaxWidth()
         )
+
         Button(
             onClick = onSaveClick,
             enabled = uiStateSiswa.isEntryValid,
@@ -105,7 +110,9 @@ fun FormTambahSiswa(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(
+            dimensionResource(id = R.dimen.padding_medium)
+        )
     ) {
         OutlinedTextField(
             value = detailSiswa.nama,
@@ -115,6 +122,7 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
+
         OutlinedTextField(
             value = detailSiswa.alamat,
             onValueChange = { onValueChange(detailSiswa.copy(alamat = it)) },
@@ -123,6 +131,7 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
+
         OutlinedTextField(
             value = detailSiswa.telpon,
             onValueChange = { onValueChange(detailSiswa.copy(telpon = it)) },
@@ -136,12 +145,17 @@ fun FormTambahSiswa(
         if (enabled) {
             Text(
                 text = stringResource(R.string.required_field),
-                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.padding_medium)
+                )
             )
         }
+
         Divider(
-            thickness = dimensionResource(R.dimen.padding_small),
-            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
+            thickness = dimensionResource(id = R.dimen.padding_small),
+            modifier = Modifier.padding(
+                bottom = dimensionResource(id = R.dimen.padding_medium)
+            )
         )
     }
 }
